@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            id="org.ifml.ide.ui.diagrams.InteractionFlowModelDiagram"
+            name="Interaction Flow Model Diagram"
+            type="InteractionFlowModelDiagram">
+      </diagramType>
+      <diagramType
+            id="org.ifml.ide.ui.diagrams.ContentModelDiagram"
+            name="Content Model Diagram"
+            type="ContentModelDiagram">
+      </diagramType>
+      <diagramType
+            id="org.ifml.ide.ui.diagrams.ViewpointDiagram"
+            name="Viewpoint Diagram"
+            type="ViewpointDiagram">
+      </diagramType>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            class="org.ifml.ide.ui.diagrams.InteractionFlowModelDiagramTypeProvider"
+            id="org.ifml.ide.ui.diagrams.InteractionFlowModelDiagramTypeProvider"
+            name="Interaction Flow Model Diagram Type Provider">
+         <diagramType
+               id="org.ifml.ide.ui.diagrams.InteractionFlowModelDiagram">
+         </diagramType>
+         <imageProvider
+               id="org.ifml.eclipse.graphiti.platform.CommonImageProvider">
+         </imageProvider>
+         <imageProvider
+               id="org.ifml.ide.ui.platform.IfmlImageProvider">
+         </imageProvider>
+      </diagramTypeProvider>
+      <diagramTypeProvider
+            class="org.ifml.ide.ui.diagrams.ContentModelDiagramTypeProvider"
+            id="org.ifml.ide.ui.diagrams.ContentModelDiagramTypeProvider"
+            name="Content Model Diagram Type Provider">
+         <diagramType
+               id="org.ifml.ide.ui.diagrams.ContentModelDiagram">
+         </diagramType>
+         <imageProvider
+               id="org.ifml.eclipse.graphiti.platform.CommonImageProvider">
+         </imageProvider>
+         <imageProvider
+               id="org.ifml.ide.ui.platform.IfmlImageProvider">
+         </imageProvider>
+      </diagramTypeProvider>
+      <diagramTypeProvider
+            class="org.ifml.ide.ui.diagrams.ViewpointDiagramTypeProvider"
+            id="org.ifml.ide.ui.diagrams.ViewpointDiagramTypeProvider"
+            name="Viewpoint Diagram Type Provider">
+         <diagramType
+               id="org.ifml.ide.ui.diagrams.ViewpointDiagram">
+         </diagramType>
+         <imageProvider
+               id="org.ifml.eclipse.graphiti.platform.CommonImageProvider">
+         </imageProvider>
+         <imageProvider
+               id="org.ifml.ide.ui.platform.IfmlImageProvider">
+         </imageProvider>
+      </diagramTypeProvider>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.imageProviders">
+      <imageProvider
+            class="org.ifml.ide.ui.platform.IfmlImageProvider"
+            id="org.ifml.ide.ui.platform.IfmlImageProvider">
+      </imageProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+ 	  <editor
+          class="org.ifml.ide.ui.editors.IfmlModelEditor"
+          contributorClass="org.eclipse.graphiti.ui.editor.DiagramEditorActionBarContributor"
+          default="true"
+          extensions="ifml"
+          icon="icons/full/obj16/interaction_flow_model_obj.png"
+          id="org.ifml.ide.ui.editors.IfmlModelEditor"
+          name="Interaction Flow Model Editor">
+       <contentTypeBinding
+             contentTypeId="org.ifml.ide.core.contenttype.IfmlContentType">
+       </contentTypeBinding>
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.ifml.ide.ui.IfmlCategory"
+            name="IFML">
+      </category>
+      <wizard
+            category="org.ifml.ide.ui.IfmlCategory"
+            class="org.ifml.ide.ui.wizards.NewIfmlModelWizard"
+            hasPages="true"
+            icon="icons/full/obj16/interaction_flow_model_obj.png"
+            id="org.ifml.ide.ui.wizards.NewIfmlModelWizard"
+            name="IFML Model"
+            project="false">
+      </wizard>
+   </extension>
+ <extension
+    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+    <propertyContributor
+          contributorId="InteractionFlowModelDiagram.PropertyContributor"
+          tabDescriptorProvider="org.ifml.ide.ui.properties.IfmlTabDescriptorProvider">
+        <propertyCategory category="IFML"> 
+        </propertyCategory> 
+    </propertyContributor> 
+</extension>
+ <extension
+       point="org.eclipse.ui.commands">
+    <command
+          id="org.ifml.ide.ui.NewViewPointCommand"
+          name="New View Point">
+    </command>
+ </extension>
+ <extension
+       point="org.eclipse.ui.handlers">
+    <handler
+          class="org.ifml.ide.ui.commands.NewViewPointHandler"
+          commandId="org.ifml.ide.ui.NewViewPointCommand">
+    </handler>
+ </extension>
+ <!--
+ <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="false"
+          locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+       <toolbar
+             id="org.ifml.ide.ui.IfmlToolbar"
+             label="IFML">
+          <command
+                commandId="org.ifml.ide.ui.NewViewPointCommand"
+                icon="icons/full/obj16/viewpoint_obj.png"
+                label="New View Point"
+                style="push">
+             <visibleWhen
+                   checkEnabled="false">
+                <reference
+                      definitionId="org.ifml.ide.ui.IfmlEditorIsActive">
+                </reference>
+             </visibleWhen>
+          </command>
+       </toolbar>
+    </menuContribution>
+ </extension>
+ -->
+ <extension
+       point="org.eclipse.core.expressions.definitions">
+    <definition
+          id="org.ifml.ide.ui.IfmlEditorIsActive">
+       <with
+             variable="activeEditorId">
+          <equals
+                value="org.ifml.ide.ui.editors.IfmlModelEditor">
+          </equals>
+       </with>
+    </definition>
+ </extension>
+</plugin>

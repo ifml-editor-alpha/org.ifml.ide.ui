@@ -1,0 +1,49 @@
+<project name="GenerateImages" default="main">
+    
+	<property name="images-project-location" location="../../org.ifml.ide.build"/>
+	<import file="${images-project-location}/scripts/ImagesMacros.xml" />
+	
+	<macrodef name="obj16">
+	    <attribute name="id"/>
+		<attribute name="target-id" default="@{id}"/>
+		<sequential>
+			<svg-export source-file="${basedir}/IFML.svg" id="@{id}" extent="16x16"/>
+			<optipng/>
+			<png-copy target-file="${basedir}/../icons/full/obj16/@{target-id}_obj.png"/>
+		</sequential>
+	</macrodef>
+	
+	<target name="main">
+		<!--
+		<obj16 id="action"/>
+		<obj16 id="annotation"/>
+		<obj16 id="classifier"/>
+		<obj16 id="conditional_expression"/>
+		<obj16 id="data_binding"/>
+		<obj16 id="data_flow"/>
+		<obj16 id="dynamic_behavior"/>
+		<obj16 id="details"/>
+		<obj16 id="event" target-id="action_event"/>
+		<obj16 id="event" target-id="system_event"/>
+		<obj16 id="event" target-id="view_element_event"/>
+		<obj16 id="expression" target-id="activation_expression"/>
+		<obj16 id="form"/>
+		<obj16 id="list"/>
+		<obj16 id="navigation_flow"/>
+		<obj16 id="parameter"/>
+		<obj16 id="parameter_binding"/>
+		<obj16 id="parameter_binding_group"/>
+		<obj16 id="selection_field"/>
+		<obj16 id="select_event"/>
+		<obj16 id="simple_field"/>
+		<obj16 id="structural_feature"/>
+		<obj16 id="submit_event"/>
+		<obj16 id="view_component"/>
+		<obj16 id="view_component_part"/>
+		<obj16 id="view_container"/>
+		<obj16 id="view_container" target-id="window"/>
+		-->
+		<obj16 id="viewpoint"/>
+	</target>
+    
+</project>

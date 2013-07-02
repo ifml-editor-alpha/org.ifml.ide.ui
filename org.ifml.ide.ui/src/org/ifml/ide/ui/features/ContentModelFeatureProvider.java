@@ -1,0 +1,30 @@
+package org.ifml.ide.ui.features;
+
+import org.eclipse.graphiti.dt.IDiagramTypeProvider;
+import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
+import org.eclipse.graphiti.pattern.IConnectionPattern;
+import org.eclipse.graphiti.pattern.IPattern;
+import org.ifml.ide.ui.patterns.ContentModelPatternSet;
+
+/**
+ * The IFML Graphiti feature provider for content models.
+ */
+public final class ContentModelFeatureProvider extends DefaultFeatureProviderWithPatterns {
+
+    /**
+     * Constructs a new provider.
+     * 
+     * @param dtp
+     *            the diagram type provider.
+     */
+    public ContentModelFeatureProvider(IDiagramTypeProvider dtp) {
+        super(dtp);
+        for (IPattern pattern : ContentModelPatternSet.getShapePatterns()) {
+            addPattern(pattern);
+        }
+        for (IConnectionPattern pattern : ContentModelPatternSet.getConnectionPatterns()) {
+            addConnectionPattern(pattern);
+        }
+    }
+
+}
